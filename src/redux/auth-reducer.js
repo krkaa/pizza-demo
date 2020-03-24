@@ -1,5 +1,4 @@
 const SET_CURRENT_USER = 'auth-reducer/SET_CURRENT_USER'
-const IS_AUTH_USER = 'auth-reducer/IS_AUTH_USER'
 
 const INITIAL_STATE = {
     currentUser: null
