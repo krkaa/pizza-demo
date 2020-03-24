@@ -1,0 +1,373 @@
+﻿{
+  "description": "",
+  "name": "Menu for 187th St Pizza",
+  "entries": {
+    "count": 11,
+    "items": [
+      {
+        "description": "",
+        "name": "Appetizer",
+        "entries": {
+          "count": 10,
+          "items": [
+            {
+              "price": "$4.00",
+              "name": "Mozzarella Sticks (6 Pcs)",
+              "description": ""
+            },
+            {
+              "price": "$7.00",
+              "name": "Buffalo Wings (10 Pcs)",
+              "description": ""
+            },
+            {
+              "price": "$3.00",
+              "name": "Order Friend Fries",
+              "description": "With your choice of dressing"
+            },
+            {
+              "price": "$2.00",
+              "name": "Garlic Bread",
+              "description": ""
+            },
+            {
+              "price": "$3.00",
+              "name": "Garlic Bread with Cheese",
+              "description": ""
+            },
+            {
+              "price": "$2.50",
+              "name": "Beef Patty Regular",
+              "description": ""
+            },
+            {
+              "price": "$3.50",
+              "name": "Beef Patty with Cheese",
+              "description": ""
+            },
+            {
+              "price": "$5.00",
+              "name": "Beef Patty with Cheese and Coco Bread",
+              "description": ""
+            },
+            {
+              "price": "$1.00",
+              "name": "Sepolis (4 Pcs)",
+              "description": ""
+            },
+            {
+              "price": "$1.00",
+              "name": "Galines D (4 Pcs)",
+              "description": ""
+            }
+          ]
+        }
+      },
+      {
+        "description": "Choose any dressing: Italian, ranch, caesar or blue cheese",
+        "name": "Salads",
+        "entries": {
+          "count": 3,
+          "items": [
+            {
+              "price": "$5.00",
+              "name": "House Salad",
+              "description": "Lettuce, tomatoes, onions, green peppers, black olives and cucumbers"
+            },
+            {
+              "price": "$8.00",
+              "name": "Grilled Chicken Caesar Salad",
+              "description": "Chicken, croutons, parmesan cheese and caesar dressing"
+            },
+            {
+              "price": "$8.00",
+              "name": "Chef Salad",
+              "description": ""
+            }
+          ]
+        }
+      },
+      {
+        "description": "With cheese add $1",
+        "name": "Specialty Hot Heroes",
+        "entries": {
+          "count": 5,
+          "items": [
+            {
+              "price": "$5.00",
+              "name": "Meatballs Parmigiana Hot Hero",
+              "description": ""
+            },
+            {
+              "price": "$5.00",
+              "name": "Chicken Parmigiana Hot Hero",
+              "description": ""
+            },
+            {
+              "price": "$5.00",
+              "name": "Sausage Parmigiana Hot Hero",
+              "description": ""
+            },
+            {
+              "price": "$5.00",
+              "name": "Eggplant Parmigiana HeroHot Hero",
+              "description": ""
+            },
+            {
+              "price": "$5.00",
+              "name": "Sausage Parmigiana Hot Hero",
+              "description": ""
+            }
+          ]
+        }
+      },
+      {
+        "description": "Served with free soda",
+        "name": "Baked Pastas",
+        "entries": {
+          "count": 4,
+          "items": [
+            {
+              "price": "$8.00",
+              "name": "Baked Ziti",
+              "description": "Filled with ricotta cheese, baked with marinara sauce and mozzarella cheese"
+            },
+            {
+              "price": "$8.00",
+              "name": "Homemade Baked Lasagna",
+              "description": "Stuffed with grand beef, ricotta cheese, baked with marinara sauce and mozzarella cheese"
+            },
+            {
+              "price": "$8.00",
+              "name": "Homemade Stuffed Shells",
+              "description": "Filled with ricotta cheese, baked with marinara sauce and mozzarella cheese"
+            },
+            {
+              "price": "$8.00",
+              "name": "Cheese Ravioli",
+              "description": "Filled with ricotta cheese, baked with marinara sauce and mozzarella cheese"
+            }
+          ]
+        }
+      },
+      {
+        "description": "Served with spaghetti or ziti. With cheese add $2",
+        "name": "Special Italian Dinner",
+        "entries": {
+          "count": 4,
+          "items": [
+            {
+              "price": "$7.00",
+              "name": "Meatballs Dinner",
+              "description": ""
+            },
+            {
+              "price": "$7.00",
+              "name": "Eggplant Dinner",
+              "description": ""
+            },
+            {
+              "price": "$7.00",
+              "name": "Sausage Dinner",
+              "description": ""
+            },
+            {
+              "price": "$7.00",
+              "name": "Chicken Cutlet Dinner",
+              "description": ""
+            }
+          ]
+        }
+      },
+      {
+        "description": "Additional topping per pie $2, per slice $1",
+        "name": "Pizza",
+        "entries": {
+          "count": 5,
+          "items": [
+            {
+              "price": "$8.00",
+              "name": "Cheese Pizza",
+              "description": ""
+            },
+            {
+              "price": "$8.00",
+              "name": "Half & Half Cheese Pizza",
+              "description": ""
+            },
+            {
+              "price": "$15.00",
+              "name": "Sicilian Pizza",
+              "description": "8 slices. Pizza sauce, thick crust"
+            },
+            {
+              "price": "$2.00",
+              "name": "Regular Slice",
+              "description": ""
+            },
+            {
+              "price": "$2.50",
+              "name": "Sicilian Slice",
+              "description": ""
+            }
+          ]
+        }
+      },
+      {
+        "description": "",
+        "name": "Gourmet Pizza",
+        "entries": {
+          "count": 13,
+          "items": [
+            {
+              "price": "$10.00",
+              "name": "White Pizza",
+              "description": "Ricotta cheese, mozzarella cheese and parmesan cheese"
+            },
+            {
+              "price": "$10.00",
+              "name": "Hawaiian Special Pizza",
+              "description": "Pineapple and ham"
+            },
+            {
+              "price": "$10.00",
+              "name": "Lasagna Pizza",
+              "description": "Romano cheese, mozzarella cheese, ricotta cheese and meat sauce"
+            },
+            {
+              "price": "$10.00",
+              "name": "Vegetable Pizza",
+              "description": "Peppers, onions, mushrooms, broccoli and tomatoes"
+            },
+            {
+              "price": "$12.00",
+              "name": "Chicken Parmesan Pizza",
+              "description": "Homemade marinara sauce, mozzarella cheese and fresh chicken"
+            },
+            {
+              "price": "$11.00",
+              "name": "Supreme Italian Pizza",
+              "description": "Peppers, sausage, pepperoni, mushroom and onions"
+            },
+            {
+              "price": "$10.00",
+              "name": "Pepperoni Pizza Pie",
+              "description": ""
+            },
+            {
+              "price": "$10.00",
+              "name": "Bacon Pizza",
+              "description": ""
+            },
+            {
+              "price": "$11.00",
+              "name": "Buffalo Chicken Pizza",
+              "description": "Hot sauce, blue cheese and mozzarella cheese"
+            },
+            {
+              "price": "$11.00",
+              "name": "Meat Lovers Pizza",
+              "description": "Pepperoni, sausage, meat balls, bacon and chicken"
+            },
+            {
+              "price": "$11.00",
+              "name": "Bruschetta Pizza Pie",
+              "description": "Red onions, chicken, fresh parsley, olive oil and no sauce"
+            },
+            {
+              "price": "$11.00",
+              "name": "Salad Pizza",
+              "description": "Salad onions, tomatoes, chicken and ranch"
+            },
+            {
+              "price": "$11.00",
+              "name": "Chicken Florentina Pizza",
+              "description": "Chicken, bacon, ranch and tomatoes"
+            }
+          ]
+        }
+      },
+      {
+        "description": "",
+        "name": "Fresh Calzones",
+        "entries": {
+          "count": 1,
+          "items": [
+            {
+              "price": "$5.00",
+              "name": "Ricotta and Mozzarella Cheese Calzone",
+              "description": "Served with free soda. Additional topping: chicken, pepperoni or sausage for $1 extra"
+            }
+          ]
+        }
+      },
+      {
+        "description": "",
+        "name": "Chicken Rolls",
+        "entries": {
+          "count": 1,
+          "items": [
+            {
+              "price": "$5.00",
+              "name": "Chicken Roll",
+              "description": "With your choice of stuffing: sausage, pepperoni, chicken. Served with free soda"
+            }
+          ]
+        }
+      },
+      {
+        "description": "",
+        "name": "Side Orders",
+        "entries": {
+          "count": 2,
+          "items": [
+            {
+              "price": "$7.00",
+              "name": "Side of Meatballs",
+              "description": ""
+            },
+            {
+              "price": "$7.00",
+              "name": "Side of Chicken Parmigiana",
+              "description": ""
+            }
+          ]
+        }
+      },
+      {
+        "description": "",
+        "name": "Beverages",
+        "entries": {
+          "count": 5,
+          "items": [
+            {
+              "price": "$1.00",
+              "name": "Can Soda",
+              "description": ""
+            },
+            {
+              "price": "$3.00",
+              "name": "2-Liter Soda",
+              "description": ""
+            },
+            {
+              "price": "$1.50",
+              "name": "Snapple",
+              "description": ""
+            },
+            {
+              "price": "$1.00",
+              "name": "Water",
+              "description": ""
+            },
+            {
+              "price": "$1.75",
+              "name": "20 Oz. Bottle Soda",
+              "description": ""
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from 'react';
+import styles from './App.module.sass';
+import {Route, Switch, withRouter} from "react-router-dom";
+import Preloader from "./common/Preloader/Preloader";
+import Header from "./Components/Header/Header";
+import Login from "./Components/Login/Login";
+import HomeContent from "./Components/HomeContent/HomeContent";
+import MenuContent from "./Components/Menu/MenuContent";
+import AuthProvider from "./Components/Auth/Auth";
+import {connect} from "react-redux";
+import {compose} from "redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = (props) => {
+
+    return (
+        <AuthProvider>
+            <Switch>
+                <div className={styles.appWrapper}>
+                    <Header />
+                    <div className={styles.appWrapperContent}>
+                        <Route
+                            exact path='/'
+                            component={HomeContent}
+                        />
+                        <Suspense fallback={<Preloader/>}>
+
+                            <Route
+                                exact path='/menu'
+                                render={() => <MenuContent/>}
+                            />
+                            <Route
+                                exact path='/login'
+                                render={() => <Login/>}
+                            />
+
+                        </Suspense>
+                    </div>
+                </div>
+            </Switch>
+        </AuthProvider>
+    )
 }
 
-export default App;
+export default compose(
+    withRouter,
+    connect(null, null)
+)(App);
