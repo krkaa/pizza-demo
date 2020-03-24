@@ -1,7 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../Auth/Auth";
+import {connect} from "react-redux";
+import {requestMenu} from "../../redux/menu-reducer";
+import PreviewItem from "./PreviewItem/PreviewItem";
 
-const MenuContent = () => {
+const MenuContent = ({menuData}) => {
 
     const {currentUser} = useContext(AuthContext)
 
@@ -16,9 +19,24 @@ const MenuContent = () => {
         }
     }, [currentUser])
 
-    return (
-        <div><p>{email}</p></div>
-    )
+    console.log(menuData.map(item => item))
+
+    return <>
+            {
+                menuData.map(item => (
+                    <PreviewItem
+                        key={item.id}
+                        title={item.title}
+                        routeName={item.routeName}
+                        items={item.items}
+                    />
+                ))
+            }
+        </>
 }
 
-export default MenuContent
+let mapStateToProps = state => ({
+    menuData: state.menu.menuData
+})
+
+export default connect(mapStateToProps, {})(MenuContent)

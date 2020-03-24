@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
 import styles from './App.module.sass';
 import {Route, Switch, withRouter} from "react-router-dom";
 import Preloader from "./common/Preloader/Preloader";
@@ -7,11 +7,16 @@ import AuthProvider from "./Components/Auth/Auth";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import HomeContainer from "./Components/HomeContent/HomeContainer";
+import {requestMenu} from "./redux/menu-reducer";
 
 const MenuContent = lazy(() => import("./Components/Menu/MenuContent"))
 const Login = lazy(() => import("./Components/Login/Login"))
 
-const App = (props) => {
+const App = ({requestMenu}) => {
+
+    useEffect(() => {
+        requestMenu()
+    }, [])
 
     return (
         <AuthProvider>
@@ -44,5 +49,5 @@ const App = (props) => {
 
 export default compose(
     withRouter,
-    connect(null, null)
+    connect(null, {requestMenu})
 )(App);

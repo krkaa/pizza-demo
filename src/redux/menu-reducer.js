@@ -1,7 +1,11 @@
-const SET_USER_ADRESS = 'menu-reducer/SET_USER_ADRESS'
+import fakeDataMenu from '../data-clean/data'
 
-const INITIAL_STATE = {
-    userAdress: null
+const SET_USER_ADRESS = 'menu-reducer/SET_USER_ADRESS'
+const SET_MENU_DATA = 'menu-reducer/SET_MENU_DATA'
+
+let INITIAL_STATE = {
+    userAdress: null,
+    menuData: []
 }
 
 const menuReducer = ( state = INITIAL_STATE, action ) => {
@@ -12,11 +16,22 @@ const menuReducer = ( state = INITIAL_STATE, action ) => {
                 ...state,
                 userAdress: action.payload
             }
+        case SET_MENU_DATA:
+            return {
+                ...state,
+                menuData: action.payload
+            }
         default:
             return state
     }
 }
 
 export const setUserAdress = (adress) => ({ type: SET_USER_ADRESS, payload: adress })
+const setMenuData = (menu) => ({ type: SET_MENU_DATA, payload: menu})
+
+export const requestMenu = () => async (dispatch) => {
+    let data = await fakeDataMenu
+    dispatch(setMenuData(data))
+}
 
 export default menuReducer
