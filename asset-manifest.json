@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/pizza-demo/static/css/main.8aa595e5.chunk.css",
+    "main.js": "/pizza-demo/static/js/main.fcd55983.chunk.js",
+    "main.js.map": "/pizza-demo/static/js/main.fcd55983.chunk.js.map",
+    "runtime-main.js": "/pizza-demo/static/js/runtime-main.d3298116.js",
+    "runtime-main.js.map": "/pizza-demo/static/js/runtime-main.d3298116.js.map",
+    "static/js/2.bcef0e7c.chunk.js": "/pizza-demo/static/js/2.bcef0e7c.chunk.js",
+    "static/js/2.bcef0e7c.chunk.js.map": "/pizza-demo/static/js/2.bcef0e7c.chunk.js.map",
+    "index.html": "/pizza-demo/index.html",
+    "precache-manifest.730724e137b75590d7e6c8221fb75894.js": "/pizza-demo/precache-manifest.730724e137b75590d7e6c8221fb75894.js",
+    "service-worker.js": "/pizza-demo/service-worker.js",
+    "static/css/main.8aa595e5.chunk.css.map": "/pizza-demo/static/css/main.8aa595e5.chunk.css.map",
+    "static/js/2.bcef0e7c.chunk.js.LICENSE.txt": "/pizza-demo/static/js/2.bcef0e7c.chunk.js.LICENSE.txt",
+    "static/media/background-image.jpg": "/pizza-demo/static/media/background-image.4df8904b.jpg",
+    "static/media/home-image.jpg": "/pizza-demo/static/media/home-image.99420fc7.jpg",
+    "static/media/logo.png": "/pizza-demo/static/media/logo.991d78ee.png",
+    "static/media/preloader.svg": "/pizza-demo/static/media/preloader.b303b419.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3298116.js",
+    "static/js/2.bcef0e7c.chunk.js",
+    "static/css/main.8aa595e5.chunk.css",
+    "static/js/main.fcd55983.chunk.js"
+  ]
+}
