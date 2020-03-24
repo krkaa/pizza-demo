@@ -15,6 +15,9 @@ const AuthProvider = ({children, ...props}) => {
     if (currentUser) {
         props.setCurrentUser(currentUser)
     }
+    else {
+        props.setCurrentUser(null)
+    }
 
     return (
         <AuthContext.Provider

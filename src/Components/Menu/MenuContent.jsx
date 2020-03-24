@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import {AuthContext} from "../Auth/Auth";
 
-const MenuContent = (props) => {
+const MenuContent = () => {
+
+    const {currentUser} = useContext(AuthContext)
+
+    let [email, setEmail] = useState('Вы не авторизованы!')
+
+    useEffect(() => {
+        if(currentUser != null) {
+            setEmail(currentUser.email)
+        }
+        else {
+            setEmail('Вы не авторизованы!')
+        }
+    }, [currentUser])
+
     return (
-        <div>Menu</div>
+        <div><p>{email}</p></div>
     )
 }
 

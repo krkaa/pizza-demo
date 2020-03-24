@@ -1,14 +1,15 @@
-import React, {Suspense} from 'react';
+import React, {lazy, Suspense} from 'react';
 import styles from './App.module.sass';
 import {Route, Switch, withRouter} from "react-router-dom";
 import Preloader from "./common/Preloader/Preloader";
 import Header from "./Components/Header/Header";
-import Login from "./Components/Login/Login";
-import HomeContent from "./Components/HomeContent/HomeContent";
-import MenuContent from "./Components/Menu/MenuContent";
 import AuthProvider from "./Components/Auth/Auth";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import HomeContainer from "./Components/HomeContent/HomeContainer";
+
+const MenuContent = lazy(() => import("./Components/Menu/MenuContent"))
+const Login = lazy(() => import("./Components/Login/Login"))
 
 const App = (props) => {
 
@@ -20,7 +21,7 @@ const App = (props) => {
                     <div className={styles.appWrapperContent}>
                         <Route
                             exact path='/'
-                            component={HomeContent}
+                            component={HomeContainer}
                         />
                         <Suspense fallback={<Preloader/>}>
 

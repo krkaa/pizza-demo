@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./HomeContent.module.sass"
 import backgroundImg from "../../assets/images/home-image.jpg";
 import {createField, Input} from "../../common/FormControls/FormControls";
-import {reduxForm} from "redux-form";
+import {reduxForm, submit} from "redux-form";
 import {required} from "../../Controls/Validators/Validators";
 
 const style = {
@@ -10,6 +10,7 @@ const style = {
     backgroundSize: "cover",
     borderRadius: "5px"
 }
+
 
 const HomeContent = ({handleSubmit}) => {
     return <div className={styles.homePage} style={style}>
@@ -19,7 +20,7 @@ const HomeContent = ({handleSubmit}) => {
             <div className={styles.orderArea}>
                 <form onSubmit={handleSubmit}>
                     {createField('Type your adress...', 'text', 'orderAdress', Input, [], styles.orderInput)}
-                    <button className={styles.button}>Order</button>
+                    <button className={styles.button} type="submit">Order</button>
                 </form>
             </div>
         </div>
