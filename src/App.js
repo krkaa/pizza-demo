@@ -11,6 +11,7 @@ import {requestMenu} from "./redux/menu-reducer";
 
 const MenuContent = lazy(() => import("./Components/Menu/MenuContent"))
 const Login = lazy(() => import("./Components/Login/Login"))
+const Cart = lazy(() => import("./Components/Cart/Cart"))
 
 const App = ({requestMenu}) => {
 
@@ -37,6 +38,10 @@ const App = ({requestMenu}) => {
                             <Route
                                 exact path='/login'
                                 render={() => <Login/>}
+                            />
+                            <Route
+                                exact path='/cart'
+                                render={() => <Cart/>}
                             />
 
                         </Suspense>

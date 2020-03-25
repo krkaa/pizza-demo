@@ -1,42 +1,43 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../Auth/Auth";
 import {connect} from "react-redux";
-import {requestMenu} from "../../redux/menu-reducer";
 import PreviewItem from "./PreviewItem/PreviewItem";
+import MenuHead from "./MenuHead";
 
-const MenuContent = ({menuData}) => {
+const MenuContent = ({menuData, quantityItems}) => {
 
     const {currentUser} = useContext(AuthContext)
 
-    let [email, setEmail] = useState('Вы не авторизованы!')
+    let [email, setEmail] = useState('Гость')
 
     useEffect(() => {
-        if(currentUser != null) {
+        if (currentUser != null) {
             setEmail(currentUser.email)
-        }
-        else {
-            setEmail('Вы не авторизованы!')
+        } else {
+            setEmail('Гость')
         }
     }, [currentUser])
 
-    console.log(menuData.map(item => item))
+    console.log(email)
 
     return <>
-            {
-                menuData.map(item => (
-                    <PreviewItem
-                        key={item.id}
-                        title={item.title}
-                        routeName={item.routeName}
-                        items={item.items}
-                    />
-                ))
-            }
-        </>
+        <MenuHead email={email} currentUser={currentUser} quantityItems={quantityItems}/>
+        {
+            menuData.map(item => (
+                <PreviewItem
+                    key={item.id}
+                    title={item.title}
+                    routeName={item.routeName}
+                    items={item.items}
+                />
+            ))
+        }
+    </>
 }
 
 let mapStateToProps = state => ({
-    menuData: state.menu.menuData
+    menuData: state.menu.menuData,
+    quantityItems: state.cart.quantityItems
 })
 
 export default connect(mapStateToProps, {})(MenuContent)
