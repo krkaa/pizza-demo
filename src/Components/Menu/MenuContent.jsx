@@ -18,8 +18,6 @@ const MenuContent = ({menuData, quantityItems}) => {
         }
     }, [currentUser])
 
-    console.log(email)
-
     return <>
         <MenuHead email={email} currentUser={currentUser} quantityItems={quantityItems}/>
         {
