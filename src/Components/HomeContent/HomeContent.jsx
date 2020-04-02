@@ -2,9 +2,7 @@ import React from 'react';
 import styles from "./HomeContent.module.sass"
 import backgroundImg from "../../assets/images/home-image.jpg";
 import {createField, Input} from "../../common/FormControls/FormControls";
-import {reduxForm, submit} from "redux-form";
-import {required} from "../../Controls/Validators/Validators";
-import CartIcon from "../Cart/CartIcon";
+import {reduxForm} from "redux-form";
 
 const style = {
     background: `url(${backgroundImg}) 100% 100% no-repeat`,

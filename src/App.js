@@ -13,11 +13,12 @@ const MenuContent = lazy(() => import("./Components/Menu/MenuContent"))
 const Login = lazy(() => import("./Components/Login/Login"))
 const Cart = lazy(() => import("./Components/Cart/Cart"))
 
+
 const App = ({requestMenu}) => {
 
     useEffect(() => {
         requestMenu()
-    }, [])
+    }, [requestMenu])
 
     return (
         <AuthProvider>

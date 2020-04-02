@@ -1,7 +1,6 @@
 const ADD_ITEM = 'cart-reducer/ADD_ITEM'
 const REMOVE_ITEM = 'cart-reducer/REMOVE_ITEM'
 const CLEAR_ITEM_FROM_CART = 'cart-reducer/CLEAR_ITEM_FROM_CART'
-const SET_QUANTITY_ITEMS = 'cart-reducer/SET_QUANTITY_ITEMS'
 
 const INITIAL_STATE = {
     cartItems: [],
