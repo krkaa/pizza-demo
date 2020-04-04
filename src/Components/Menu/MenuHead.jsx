@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MenuHead = ({email, currentUser}) => {
+const MenuHead = ({displayName, currentUser}) => {
 
     return <>
         <div className="container">
@@ -8,8 +8,8 @@ const MenuHead = ({email, currentUser}) => {
                 <div className="col-6">
                     {
                         currentUser
-                            ? <p><b>{`Вы авторизованы как ${email}`}</b></p>
-                            : <p><b>{`Здарвствуйте, ${email}!`}</b></p>
+                            ? <p>{`Вы авторизованы как`} <b>{displayName}</b></p>
+                            : <p><b>{`Здарвствуйте, ${displayName}!`}</b></p>
                     }
                 </div>
             </div>

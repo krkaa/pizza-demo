@@ -9,10 +9,14 @@ const SignUp = ({history}) => {
     const onSubmit = useCallback(async formData => {
         const email = formData.email
         const password = formData.password
+        const fullName = formData.fullName
         try {
-            await app
+            (await app
                 .auth()
-                .createUserWithEmailAndPassword(email, password)
+                .createUserWithEmailAndPassword(email, password))
+                .user.updateProfile({
+                displayName: fullName
+            })
             history.push("/")
         } catch (e) {
             alert(e)

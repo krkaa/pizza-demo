@@ -1,4 +1,4 @@
-import fakeDataMenu from '../data-clean/data'
+import {menuAPI} from "../api/api";
 
 const SET_USER_ADRESS = 'menu-reducer/SET_USER_ADRESS'
 const SET_MENU_DATA = 'menu-reducer/SET_MENU_DATA'
@@ -30,7 +30,7 @@ export const setUserAdress = (adress) => ({ type: SET_USER_ADRESS, payload: adre
 const setMenuData = (menu) => ({ type: SET_MENU_DATA, payload: menu})
 
 export const requestMenu = () => async (dispatch) => {
-    let data = await fakeDataMenu
+    let data = await menuAPI.getAllMenuData()
     dispatch(setMenuData(data))
 }
 

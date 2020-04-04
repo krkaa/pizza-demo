@@ -7,6 +7,7 @@ const Cart = ({cart}) => {
     const totalPrice = cart.cartItems.reduce((total, amount) => {
         return amount.price * amount.quantity + total
     }, 0)
+
     return (
         <div className={s.checkoutPage}>
             <div className={s.checkoutHeader}>

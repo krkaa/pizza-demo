@@ -8,18 +8,18 @@ const MenuContent = ({menuData, quantityItems}) => {
 
     const {currentUser} = useContext(AuthContext)
 
-    let [email, setEmail] = useState('Гость')
+    let [displayName, setDisplayName] = useState('Гость')
 
     useEffect(() => {
         if (currentUser != null) {
-            setEmail(currentUser.email)
+            setDisplayName(currentUser.displayName)
         } else {
-            setEmail('Гость')
+            setDisplayName('Гость')
         }
     }, [currentUser])
 
     return <>
-        <MenuHead email={email} currentUser={currentUser} quantityItems={quantityItems}/>
+        <MenuHead displayName={displayName} currentUser={currentUser} quantityItems={quantityItems}/>
         {
             menuData.map(item => (
                 <PreviewItem
