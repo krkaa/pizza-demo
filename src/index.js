@@ -8,12 +8,16 @@ import {Provider} from "react-redux";
 import store from "./redux/redux-store";
 import AuthProvider from "./Components/Auth/Auth";
 
+let localCart = {}
+if (localStorage.getItem('localCart')) {
+    localCart = JSON.parse(localStorage.getItem('localCart'))
+}
 
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
             <AuthProvider>
-                <App/>
+                <App localCart={localCart}/>
             </AuthProvider>
         </Provider>
     </BrowserRouter>

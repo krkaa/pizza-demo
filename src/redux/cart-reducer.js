@@ -75,8 +75,15 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 }
 
 
-export const setLocalCart = (user) => async (dispatch) => {
+export const setLocalCart = (cart) => async (dispatch) => {
 
+   let data =  Object.keys(cart).map(item => cart[item])
+
+    let cartArr = data.find(item => Array.isArray(item)
+        ? item
+        : undefined)
+
+    cartArr.map(item => dispatch(addItem(item, item.quantity)))
 
 }
 

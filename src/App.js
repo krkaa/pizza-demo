@@ -14,19 +14,17 @@ const Login = lazy(() => import("./Components/Login/Login"))
 const Cart = lazy(() => import("./Components/Cart/Cart"))
 
 
-const App = ({cart, setLocalCart}) => {
+const App = ({cart, setLocalCart, localCart}) => {
 
     const {currentUser} = useContext(AuthContext)
 
     useEffect(() => {
 
-        if (currentUser) {
-            setLocalCart(cart, currentUser)
-        } else {
-            setLocalCart(cart, currentUser)
+        if (localCart.cartItems.length > 0) {
+            setLocalCart(localCart)
         }
 
-    }, [currentUser, setLocalCart, cart])
+    }, [setLocalCart, localCart])
 
     return <Switch>
         <div className={styles.appWrapper}>
