@@ -1,3 +1,5 @@
+import {orderAPI} from "../api/api";
+
 const ADD_ITEM = 'cart-reducer/ADD_ITEM'
 const REMOVE_ITEM = 'cart-reducer/REMOVE_ITEM'
 const CLEAR_ITEM_FROM_CART = 'cart-reducer/CLEAR_ITEM_FROM_CART'
@@ -77,13 +79,15 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 
 export const setLocalCart = (cart) => async (dispatch) => {
 
-   let data =  Object.keys(cart).map(item => cart[item])
+    let data = Object.keys(cart).map(item => cart[item])
 
     let cartArr = data.find(item => Array.isArray(item)
         ? item
         : undefined)
 
-    cartArr.map(item => dispatch(addItem(item, item.quantity)))
+    if (cartArr) {
+        cartArr.map(item => dispatch(addItem(item, item.quantity)))
+    }
 
 }
 

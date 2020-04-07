@@ -1,30 +1,28 @@
-import React, {lazy, Suspense, useContext, useEffect} from 'react';
-import styles from './App.module.sass';
-import {Route, Switch, withRouter} from "react-router-dom";
-import Preloader from "./common/Preloader/Preloader";
-import Header from "./Components/Header/Header";
-import {AuthContext} from "./Components/Auth/Auth";
-import {connect} from "react-redux";
-import {compose} from "redux";
-import HomeContainer from "./Components/HomeContent/HomeContainer";
-import {setLocalCart} from "./redux/cart-reducer";
+import React, {lazy, Suspense, useEffect} from 'react'
+import styles from './App.module.sass'
+import {Route, Switch, withRouter} from "react-router-dom"
+import Preloader from "./common/Preloader/Preloader"
+import Header from "./Components/Header/Header"
+import {connect} from "react-redux"
+import {compose} from "redux"
+import HomeContainer from "./Components/HomeContent/HomeContainer"
+import {setLocalCart} from "./redux/cart-reducer"
 
 const MenuContent = lazy(() => import("./Components/Menu/MenuContent"))
 const Login = lazy(() => import("./Components/Login/Login"))
 const Cart = lazy(() => import("./Components/Cart/Cart"))
 
 
-const App = ({cart, setLocalCart, localCart}) => {
-
-    const {currentUser} = useContext(AuthContext)
+const App = ({setLocalCart, localCart}) => {
 
     useEffect(() => {
 
-        if (localCart.cartItems.length > 0) {
-            setLocalCart(localCart)
-        }
+           if ( localCart ) {
+               setLocalCart(localCart)
+           }
 
-    }, [setLocalCart, localCart])
+    }, [setLocalCart,localCart ])
+
 
     return <Switch>
         <div className={styles.appWrapper}>

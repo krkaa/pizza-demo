@@ -17,7 +17,15 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)))
 window.__store__ = store
 
-loadState('localCart')
-store.subscribe(() => saveState("localCart", store.getState()["cart"]));
+store.subscribe(() => {
+    let sync = e => {
+        if (e.key === 'localCart') {
+            loadState('localCart')
+        }
+    }
+    window.addEventListener('storage', sync)
+    saveState('localCart', store.getState()['cart'])
+});
+
 
 export default store
