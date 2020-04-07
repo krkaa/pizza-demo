@@ -7,6 +7,7 @@ import CartIcon from "../../Cart/CartIcon";
 
 const NavBar = () => {
     const {currentUser} = useContext(AuthContext)
+
     return (
         <nav className={s.nav}>
             <div className="container">
@@ -29,4 +30,4 @@ const NavBar = () => {
     );
 }
 
-export default NavBar;
+export default NavBar

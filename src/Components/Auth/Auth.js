@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import app from '../Firebase/Firebase'
-import {setCurrentUser} from "../../redux/auth-reducer";
+import {setCurrentUser, setIsAuth} from "../../redux/auth-reducer";
 import {connect} from "react-redux";
+import {requestMenu} from "../../redux/menu-reducer";
 
 export const AuthContext = React.createContext()
 
@@ -10,13 +11,16 @@ const AuthProvider = ({children, ...props}) => {
 
     useEffect(() => {
         app.auth().onAuthStateChanged(setCurrentUser)
-    }, [])
+        props.requestMenu()
+    }, [props])
 
     if (currentUser) {
         props.setCurrentUser(currentUser)
+        props.setIsAuth(true)
     }
     else {
         props.setCurrentUser(null)
+        props.setIsAuth(false)
     }
 
     return (
@@ -28,4 +32,4 @@ const AuthProvider = ({children, ...props}) => {
     )
 }
 
-export default connect(null, {setCurrentUser})(AuthProvider)
+export default connect(null, {setCurrentUser, requestMenu, setIsAuth})(AuthProvider)

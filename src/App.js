@@ -7,24 +7,26 @@ import {AuthContext} from "./Components/Auth/Auth";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import HomeContainer from "./Components/HomeContent/HomeContainer";
-import {requestMenu} from "./redux/menu-reducer";
-import {setUserCart} from "./redux/cart-reducer";
+import {setLocalCart} from "./redux/cart-reducer";
 
 const MenuContent = lazy(() => import("./Components/Menu/MenuContent"))
 const Login = lazy(() => import("./Components/Login/Login"))
 const Cart = lazy(() => import("./Components/Cart/Cart"))
 
 
-const App = ({requestMenu, cart, setUserCart}) => {
+const App = ({cart, setLocalCart}) => {
 
-    const { currentUser } = useContext(AuthContext)
+    const {currentUser} = useContext(AuthContext)
 
     useEffect(() => {
-        requestMenu()
-        if (currentUser != null && cart != null) {
-            setUserCart(cart, currentUser.uid)
+
+        if (currentUser) {
+            setLocalCart(cart, currentUser)
+        } else {
+            setLocalCart(cart, currentUser)
         }
-    }, [requestMenu, currentUser, cart, setUserCart])
+
+    }, [currentUser, setLocalCart, cart])
 
     return <Switch>
         <div className={styles.appWrapper}>
@@ -56,10 +58,11 @@ const App = ({requestMenu, cart, setUserCart}) => {
 }
 
 const mapStateToProps = (state) => ({
-    cart: state.cart
+    cart: state.cart,
+    isAuth: state.auth.isAuth
 })
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, {requestMenu, setUserCart})
+    connect(mapStateToProps, {setLocalCart})
 )(App);

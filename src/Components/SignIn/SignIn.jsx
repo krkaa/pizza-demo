@@ -5,8 +5,11 @@ import {Redirect, withRouter} from "react-router-dom";
 import app from "../Firebase/Firebase";
 import {AuthContext} from "../Auth/Auth";
 import * as firebase from "firebase";
+import {compose} from "redux";
 
 const SignIn = ({history}) => {
+
+    const {currentUser} = useContext(AuthContext)
 
     const onSubmit = useCallback(
         async formData => {
@@ -36,8 +39,6 @@ const SignIn = ({history}) => {
         }
     }, [history])
 
-    const {currentUser} = useContext(AuthContext)
-
     if (currentUser) {
         return <Redirect to={"/"}/>
     }
@@ -49,4 +50,5 @@ const SignIn = ({history}) => {
     </div>
 };
 
-export default withRouter(SignIn);
+
+export default compose(withRouter)(SignIn);

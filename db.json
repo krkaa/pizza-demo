@@ -206,71 +206,11 @@
   "orders": [
     {
       "cart": {
-        "cartItems": [
-          {
-            "id": 2,
-            "name": "Kentucky Wings",
-            "imageUrl": "https://www.kfc.com.au/sites/default/files/alohadata/images/products/5pc_Original-Recipe_web_mobile.jpg",
-            "price": 8,
-            "menuId": 1,
-            "quantity": 3
-          },
-          {
-            "id": 7,
-            "name": "Rainbow Sandwich",
-            "imageUrl": "https://www.vanguardia.com/binrepository/716x477/0c0/0d0/none/12204/LBHF/web_sandwich_jamo_big_tp_VL403410_MG18566209.jpg",
-            "price": 8,
-            "menuId": 2,
-            "quantity": 2
-          },
-          {
-            "id": 9,
-            "name": "Saludable Sandwich",
-            "imageUrl": "https://i.pinimg.com/originals/b1/94/86/b194865c0203a04b401d32fc752a9265.jpg",
-            "price": 13,
-            "menuId": 2,
-            "quantity": 1
-          }
-        ],
-        "quantityItems": 6,
-        "isLoaded": true
+        "cartItems": [],
+        "quantityItems": 0
       },
-      "userId": "YsUV3w4XtbdE2szKwZrRHAtzcGs1",
+      "userId": "UoozStOQfgWERRbUHNUCRP4g5HO2",
       "id": 1
-    },
-    {
-      "cart": {
-        "cartItems": [
-          {
-            "id": 2,
-            "name": "Kentucky Wings",
-            "imageUrl": "https://www.kfc.com.au/sites/default/files/alohadata/images/products/5pc_Original-Recipe_web_mobile.jpg",
-            "price": 8,
-            "menuId": 1,
-            "quantity": 3
-          },
-          {
-            "id": 7,
-            "name": "Rainbow Sandwich",
-            "imageUrl": "https://www.vanguardia.com/binrepository/716x477/0c0/0d0/none/12204/LBHF/web_sandwich_jamo_big_tp_VL403410_MG18566209.jpg",
-            "price": 8,
-            "menuId": 2,
-            "quantity": 2
-          },
-          {
-            "id": 9,
-            "name": "Saludable Sandwich",
-            "imageUrl": "https://i.pinimg.com/originals/b1/94/86/b194865c0203a04b401d32fc752a9265.jpg",
-            "price": 13,
-            "menuId": 2,
-            "quantity": 1
-          }
-        ],
-        "quantityItems": 6,
-        "isLoaded": true
-      },
-      "userId": "DZ0yhBKw20QNOwnOiQLwqbxQdO03",
-      "id": 2
     }
   ]
 }

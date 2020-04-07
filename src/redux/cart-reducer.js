@@ -1,14 +1,10 @@
-import {orderAPI} from "../api/api";
-
 const ADD_ITEM = 'cart-reducer/ADD_ITEM'
-const ADD_INITAL_ITEMS = 'cart-reducer/ADD_INITAL_ITEMS'
 const REMOVE_ITEM = 'cart-reducer/REMOVE_ITEM'
 const CLEAR_ITEM_FROM_CART = 'cart-reducer/CLEAR_ITEM_FROM_CART'
 
 const INITIAL_STATE = {
     cartItems: [],
-    quantityItems: 0,
-    isLoaded: false
+    quantityItems: 0
 }
 
 
@@ -19,13 +15,6 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload.item),
                 quantityItems: state.quantityItems + action.payload.quantity
-            };
-        case ADD_INITAL_ITEMS:
-            return {
-                ...state,
-                cartItems: action.payload.items.cartItems,
-                quantityItems: action.payload.quantity,
-                isLoaded: true
             };
         case REMOVE_ITEM:
             return {
@@ -47,9 +36,9 @@ const cartReducer = (state = INITIAL_STATE, action) => {
 }
 
 export const addItem = (item, quantity) => ({type: ADD_ITEM, payload: {item, quantity}})
-export const addInitialItem = (items, quantity) => ({type: ADD_INITAL_ITEMS, payload: {items, quantity}})
 export const removeItem = (item, quantity) => ({type: REMOVE_ITEM, payload: {item, quantity}})
 export const clearItem = (item, quantity) => ({type: CLEAR_ITEM_FROM_CART, payload: {item, quantity}})
+
 
 export const addItemToCart = (cartItems, cartItemToAdd) => {
     const existingCartItem = cartItems.find(
@@ -62,6 +51,10 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
                 ? {...cartItem, quantity: cartItem.quantity + 1}
                 : cartItem
         )
+    }
+
+    if (cartItemToAdd.hasOwnProperty('quantity')) {
+        return [...cartItems, {...cartItemToAdd}]
     }
 
     return [...cartItems, {...cartItemToAdd, quantity: 1}]
@@ -82,40 +75,9 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 }
 
 
-export const setUserCart = (cart = [], userId) => async (dispatch) => {
+export const setLocalCart = (user) => async (dispatch) => {
 
-    let data = await orderAPI.getUserCart() // Получаем данные корзины с сервера
 
-    let user = data.find(i => i.userId === userId) // Получаем данные корзины, если они есть у пользователя
-
-    if (user && user.userId === userId && user.id && user.cart.cartItems.length > 0) {
-        if (user.cart.cartItems.length > cart.cartItems.length) {
-            if (cart.cartItems.length === 0) {
-                if (!cart.isLoaded) {
-                    await orderAPI.updateUserCart(user.cart, userId, user.id)
-                    dispatch(addInitialItem(user.cart, user.cart.quantityItems))
-                }
-                else {
-                    await orderAPI.updateUserCart(cart, userId, user.id)
-                    await orderAPI.deleteUserCart(user.id)
-                }
-            }
-            else if ( cart.cartItems.length > 0 ) {
-                await orderAPI.updateUserCart(cart, userId, user.id)
-            }
-        }
-        else if (user.cart.quantityItems < cart.quantityItems) {
-            await orderAPI.updateUserCart(cart, userId, user.id)
-        }
-        else if (user.cart.quantityItems > cart.quantityItems) {
-            await orderAPI.updateUserCart(cart, userId, user.id)
-        }
-    } else if (user && user.userId === userId) {
-        await orderAPI.updateUserCart(cart, userId, user.id)
-    } else if (!user) {
-        await orderAPI.setUserCart(cart, userId)
-        dispatch(addInitialItem(cart, 0))
-    }
 }
 
 
