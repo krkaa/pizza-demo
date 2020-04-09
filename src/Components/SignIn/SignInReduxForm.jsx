@@ -7,11 +7,11 @@ import {required} from "../../Controls/Validators/Validators"
 export default reduxForm({form: 'signing'})(({handleSubmit, onSignInWithGoogle}) => {
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
-            {createField('Enter email...', 'email', 'email', Input, [required], styles.input)}
-            {createField('Enter password...', 'password', 'password', Input, [required], styles.input)}
-            <button>Sign In</button>
+            {createField('', 'email', 'email', Input, [required], 'email', {}, 'Email')}
+            {createField('', 'password', 'password', Input, [required], "passwordSignIn", {}, 'Password')}
+            <button className="btn orange">Sign In</button>
             <p>Or Sign In With Google</p>
-            <button onClick={onSignInWithGoogle}>Sign In With Google</button>
+            <button className="btn orange" onClick={onSignInWithGoogle}>Sign In With Google</button>
         </form>
     )
 });

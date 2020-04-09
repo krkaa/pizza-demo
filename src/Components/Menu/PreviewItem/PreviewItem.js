@@ -1,29 +1,36 @@
 import React from 'react'
-import s from './PreviewItem.module.sass'
 import CollectionPreview from '../Collection/CollectionPreview'
+import {Collapsible, CollapsibleItem, Icon, Row} from "react-materialize";
 
-const PreviewItem = ({ title, items }) => {
+const PreviewItem = ({title, items}) => {
+    return <>
+        <Collapsible accordion>
+            <CollapsibleItem
+                expanded={false}
+                header={title}
+                icon={<Icon>filter_drama</Icon>}
+                node="div"
+            >
+                <Row>
 
-    return <div className={s.previewItem}>
-        <h1 className={s.title}>{title.toUpperCase()}</h1>
-        <div className={s.preview}>
-            {
-                items
-                    .filter((item, idx) => idx < 4)
-                    .map((item) => (
-                        <CollectionPreview
-                            key={item.id}
-                            name={item.name}
-                            imageUrl={item.imageUrl}
-                            price={item.price}
-                            item={item}
-                        />
-                    ))
-            }
-        </div>
-    </div>
+                    {
+                        items
+                            .map((item) => (
+                                <CollectionPreview
+                                    key={item.id}
+                                    name={item.name}
+                                    imageUrl={item.imageUrl}
+                                    price={item.price}
+                                    item={item}
+                                />
+                            ))
+                    }
+
+                </Row>
+            </CollapsibleItem>
+        </Collapsible>
+    </>
 }
-
 
 
 export default PreviewItem

@@ -1,10 +1,11 @@
 import React from 'react'
 import s from './CollectionPreview.module.sass'
 import {addItem} from '../../../redux/cart-reducer'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+import {Button, Card, CardTitle, Col, Icon} from "react-materialize";
 
-const CollectionItem = ({ item, addItem}) => {
-    const { name, price, imageUrl } = item
+const CollectionItem = ({item, addItem}) => {
+    const {name, price, imageUrl} = item
 
     const onClickEvent = () => {
         let q = 1
@@ -12,19 +13,35 @@ const CollectionItem = ({ item, addItem}) => {
     }
 
     return (
-        <div className={s.collectionItem}>
-            <div
-                className={s.image}
-                style={{
-                    backgroundImage: `url(${imageUrl})`
-                }}
-            />
-            <div className={s.collectionFooter}>
-                <span className={name}>{name}</span>
-                <span className={price}>{price}$</span>
-            </div>
-            <button onClick={onClickEvent}>Add to cart</button>
-        </div>
+        <Col
+            m={4}
+            s={12}
+        >
+            <Card
+                actions={[
+                        <Button
+                            node="button"
+                            style={{
+                                marginRight: '5px',
+                                backgroundColor: '#FF9800'
+                            }}
+                            waves="light"
+                            onClick={onClickEvent}
+                            key={item.id}
+                        >
+                            Add to cart
+                        </Button>
+                ]}
+                closeIcon={<Icon>close</Icon>}
+                header={<CardTitle image={imageUrl}/>}
+                revealIcon={<Icon>more_vert</Icon>}
+            >
+                <div className={s.collectionFooter}>
+                    <span className={name}>{name}</span>
+                    <span className={price}>{price}$</span>
+                </div>
+            </Card>
+        </Col>
     )
 }
 

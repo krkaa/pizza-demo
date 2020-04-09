@@ -1,94 +1,14 @@
 .appWrapper
-  display: grid
-  grid-template-areas: "header" "content"
-  grid-template-rows: 1fr
-  grid-template-columns: 5fr
-  grid-gap: 1vw
-  width: 75vw
+  width: 85vw
   margin: 0 auto
-  &Content
-    grid-area: content
-    background-color: #fff
-    margin: 20px
-    display: inline-block
-
-form
-  label
-    position: relative
-    width: 100%
-    margin-top: 4px
-    span
-      font-size: 14px
-      color: black
-      opacity: .7
-      text-align: right
-    input, textarea
-      background-color: rgba(255,255,255,.6)
-      border-radius: 2px
-      border: 1px solid black
-      padding: 9px 15px
-      display: block
-      color: black
-      margin-bottom: 5px
-      &:focus
-        background-color: rgba(#fff, .8)
-        transition: background-color .3s ease
-
-button
-  display: inline-block
-  border: none
-  color: #fff
-  text-decoration: none
-  background-color: #F7B21F
-  padding: 10px 15px
-  font-size: 11px
-  text-transform: uppercase
-  font-weight: 600
-  letter-spacing: 1px
-  border-radius: 2px
-  text-align: center
-  position: relative
-  outline: none
-  transition: background-color .1s ease
-  cursor: pointer
-
-  &::after
-    transition: background-color .2s ease
+  .preloader
+    margin: 0
     position: absolute
-    content: ''
-    height: 4px
-    bottom: 0
-    width: 100%
-    background-color: darken(#820300, 50%)
-    opacity: .18
-    border-bottom-left-radius: 2px
-    border-bottom-right-radius: 2px
-    left: 0
+    top: 50%
+    left: 50%
+    margin-right: -50%
+    transform: translate(-50%, -50%)
 
-  &:focus, &:hover
-    text-decoration: none
-    color: #fff
+input
+  background-color: rgba(#fff, .1)
 
-  &:hover, &:disabled
-    background-color: lighten(#820300, 5%)
-
-    &::after
-      opacity: .22
-
-  &:active
-    background-color: darken(#F7B21F, 5%)
-
-    &::after
-      opacity: .32
-
-textarea
-  border: #666 1px solid
-  outline: none
-
-input, textarea
-  border: #666 1px solid
-  outline: none
-  &:focus:required:invalid
-    border-color: red
-  &:required:valid
-    border-color: green

@@ -1,49 +1,72 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {connect} from 'react-redux'
 import s from './Cart.module.sass'
 import CartCheckoutItem from './CartCheckoutItem/CartCheckoutItem'
+import CartOrderForm from "./CartOrderForm";
+import {Button, Table} from "react-materialize";
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+const useMountEffect = (fun) => useEffect(fun, [])
 
 const Cart = ({cart}) => {
     const totalPrice = cart.cartItems.reduce((total, amount) => {
         return amount.price * amount.quantity + total
     }, 0)
 
-    const onOrderClick = () => {
-        console.log(totalPrice, cart.cartItems)
-    }
+    const [isOrder, setIsOrder] = useState(false)
 
-    return (
-        <div className={s.checkoutPage}>
-            <div className={s.checkoutHeader}>
-                <div className={s.headerBlock}>
-                    <span>Product</span>
-                </div>
-                <div className={s.headerBlock}>
-                    <span>Description</span>
-                </div>
-                <div className={s.headerBlock}>
-                    <span>Quantity</span>
-                </div>
-                <div className={s.headerBlock}>
-                    <span>Price</span>
-                </div>
-                <div className={s.headerBlock}>
-                    <span>Remove</span>
-                </div>
-            </div>
+    const myRef = useRef(1)
+
+    useMountEffect(() => scrollToRef(myRef)) // Scroll on mount
+
+    return <>
+        <Table>
+            <thead>
+            <tr>
+                <th data-field="Product">
+                    Product
+                </th>
+                <th data-field="Description">
+                    Description
+                </th>
+                <th data-field="Quantity">
+                    Quantity
+                </th>
+                <th data-field="Price">
+                    Price
+                </th>
+                <th data-field="Remove">
+                    Remove
+                </th>
+            </tr>
+            </thead>
+            <tbody>
             {
                 cart.cartItems.map(cartItem => <CartCheckoutItem key={cartItem.id} cartItem={cartItem}/>)
             }
+            </tbody>
+        </Table>
+        <div className={s.orderWrapper}>
             <div className={s.total}>
-                TOTAL:{totalPrice}$
+                Total: {totalPrice}$
             </div>
             {
-                cart.cartItems.length > 0
-                    ? <div className={s.button}><button onClick={onOrderClick}>Order</button></div>
-                    : undefined
+                cart.cartItems.length
+                    ? <Button
+                        onClick={() => (
+                            setIsOrder(true),
+                                scrollToRef(myRef)
+                        )}
+                        className={`orange ${s.button}`}>Order</Button>
+                    : null
             }
         </div>
-    )
+        {
+            isOrder
+                ? <div ref={myRef}><CartOrderForm cart={cart} totalPrice={totalPrice} ref={myRef}/></div>
+                : null
+        }
+    </>
 }
 const mapStateToProps = (state) => ({
     cart: state.cart

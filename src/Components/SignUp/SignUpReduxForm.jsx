@@ -9,11 +9,11 @@ const maxLength15 = maxLengthCreator(15);
 export default reduxForm({form: 'signup'})(({handleSubmit}) => {
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
-            {createField('Email...', 'email', 'email', Input, [required], styles.input)}
-            {createField('Full name','text', 'fullName', Input, [required, maxLength15], styles.input)}
-            {createField('Password','password', 'password', Input, [required], styles.input)}
+            {createField('', 'email', 'email', Input, [required], 'email', {}, 'Email')}
+            {createField('','text', 'fullName', Input, [required, maxLength15], 'fullName', {}, 'Full Name')}
+            {createField('','password', 'password', Input, [required], 'passwordSignUp', {}, 'Password')}
             <div className={styles.loginBtn}>
-                <button>Sign Up</button>
+                <button className='btn orange'>Sign Up</button>
             </div>
         </form>
     )

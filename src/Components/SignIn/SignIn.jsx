@@ -44,7 +44,7 @@ const SignIn = ({history}) => {
     }
 
     return <div className={styles.signIn}>
-        <h2 className={styles.h2}>I already have an account</h2>
+        <h3 className={styles.h3}>I already have an account</h3>
         <span className={styles.span}>Sign in with your email and password</span>
         <SignInReduxForm onSubmit={onSubmit} onSignInWithGoogle={onSignInWithGoogle}/>
     </div>
