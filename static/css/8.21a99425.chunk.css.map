@@ -1,0 +1,1 @@
+{"version":3,"sources":["CollectionPreview.module.sass","MenuContent.module.sass"],"names":[],"mappings":"AAAA,+BACE,qBAA2B,CAD7B,mCAGI,YAAa,CCHjB,0BACE,qBAAsB","file":"8.21a99425.chunk.css","sourcesContent":[".card {\n  margin: auto auto 10px auto;\n  img {\n    height: 200px; } }\n\n\n\n",".sider {\n  background-color: #fff; }\n"]}
