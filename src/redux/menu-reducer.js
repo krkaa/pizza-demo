@@ -1,4 +1,5 @@
 import {menuAPI} from "../api/api";
+import db from "../data-clean/data"
 
 const SET_USER_ADRESS = 'menu-reducer/SET_USER_ADRESS'
 const SET_MENU_DATA = 'menu-reducer/SET_MENU_DATA'
@@ -26,11 +27,11 @@ const menuReducer = ( state = INITIAL_STATE, action ) => {
     }
 }
 
-export const setUserAdress = (adress) => ({ type: SET_USER_ADRESS, payload: adress })
+export const setUserAddress = (adress) => ({ type: SET_USER_ADRESS, payload: adress })
 const setMenuData = (menu) => ({ type: SET_MENU_DATA, payload: menu})
 
 export const requestMenu = () => async (dispatch) => {
-    let data = await menuAPI.getAllMenuData()
+    let data = db
     dispatch(setMenuData(data))
 }
 

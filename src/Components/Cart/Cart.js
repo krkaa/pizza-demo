@@ -1,25 +1,39 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import s from './Cart.module.sass'
 import CartCheckoutItem from './CartCheckoutItem/CartCheckoutItem'
 import CartOrderForm from "./CartOrderForm";
 import {Button, Table} from "react-materialize";
+import {Drawer, Input} from 'antd'
+import {reduxForm} from "redux-form";
+import {setUserAddress} from "../../redux/menu-reducer";
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
-const useMountEffect = (fun) => useEffect(fun, [])
 
-const Cart = ({cart}) => {
+const Cart = ({cart, userAddress, setUserAddress}) => {
     const totalPrice = cart.cartItems.reduce((total, amount) => {
         return amount.price * amount.quantity + total
     }, 0)
 
-    const [isOrder, setIsOrder] = useState(false)
+    const onSubmit = (formData) => {
+        //await setUserAdress(formData.userAdr)
+        console.log(formData)
+        /*if (formData.phone && formData.userAdr && cart.cartItems.length) {
+            showDrawer()
+        }*/
+    }
 
-    const myRef = useRef(1)
+    const [visible, setVisible] = useState(false)
 
-    useMountEffect(() => scrollToRef(myRef)) // Scroll on mount
+    let showDrawer = () => {
+        setVisible(true)
+    };
 
-    return <>
+    let onClose = () => {
+        setVisible(false)
+    };
+
+    return (
+        <div>
         <Table>
             <thead>
             <tr>
@@ -50,26 +64,44 @@ const Cart = ({cart}) => {
             <div className={s.total}>
                 Total: {totalPrice}$
             </div>
-            {
-                cart.cartItems.length
-                    ? <Button
-                        onClick={() => (
-                            setIsOrder(true),
-                                scrollToRef(myRef)
-                        )}
-                        className={`orange ${s.button}`}>Order</Button>
-                    : null
-            }
         </div>
-        {
-            isOrder
-                ? <div ref={myRef}><CartOrderForm cart={cart} totalPrice={totalPrice} ref={myRef}/></div>
-                : null
-        }
-    </>
+        <ContactsReduxForm onSubmit={onSubmit}/>
+        <Drawer
+            placement="top"
+            closable={false}
+            onClose={onClose}
+            visible={visible}
+            height={400}
+        >
+            <CartOrderForm cart={cart} totalPrice={totalPrice}/>
+        </Drawer>
+    </div>
+    )
 }
 const mapStateToProps = (state) => ({
-    cart: state.cart
+    cart: state.cart,
+    userAddress: state.menu.userAdress
 })
 
-export default connect(mapStateToProps, null)(Cart)
+let ContactsReduxForm = reduxForm({form: 'contactsOrder'})(({handleSubmit}) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            <span>Ваш адрес: </span>
+            <Input
+                placeholder={'Type your adress'}
+                name="userAdr"
+                required={true}
+                type='text'
+                defaultValue={''}/>
+            <span>Ваш телефон: </span>
+            <Input
+                placeholder={'Type your phone number'}
+                name="phone"
+                required={true}
+                type={'tel'}/>
+            <Button className={`orange ${s.button}`} style={{marginBottom: '20px'}}>Order</Button>
+        </form>
+    )
+})
+
+export default connect(mapStateToProps, {setUserAddress})(Cart)

@@ -7,6 +7,7 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./redux/redux-store";
 import AuthProvider from "./Components/Auth/Auth";
+import 'antd/dist/antd.css';
 
 let localCart = {}
 if (localStorage.getItem('localCart')) {

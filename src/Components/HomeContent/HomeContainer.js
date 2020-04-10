@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from "react-redux";
 import HomeContent from "./HomeContent";
-import {setUserAdress} from "../../redux/menu-reducer";
+import {setUserAddress} from "../../redux/menu-reducer";
 import {reset} from 'redux-form'
 
-const HomeContainer = ({setUserAdress, reset, history}) => {
+const HomeContainer = ({setUserAddress, reset, history}) => {
 
     const onSubmitAdress = (formData) => {
-        setUserAdress(formData.orderAdress)
+        setUserAddress(formData.orderAdress)
         reset('order')
         history.push('/menu')
     }
@@ -17,4 +17,4 @@ const HomeContainer = ({setUserAdress, reset, history}) => {
     )
 }
 
-export default connect(null, {setUserAdress, reset})(HomeContainer)
+export default connect(null, {setUserAddress, reset})(HomeContainer)
