@@ -24,8 +24,6 @@ button
   margin-left: 120px
 
 .signUp, .signIn
-  border: 3px solid rgba(black, .2)
-  border-radius: 5px
   padding: 15px
   text-align: center
   background-color: rgba(white, .5)
@@ -36,3 +34,34 @@ button
 .span
   font-size: 19px
   margin-bottom: 40px
+
+.container
+  width: 40%
+  margin: 20px auto
+  border: 1px solid rgba(#222, .1)
+  border-radius: .2rem
+  padding: 20px
+
+@media only screen and (min-width: 320px)
+  .container
+    width: 100%
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px)
+  .container
+    width: 90%
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px)
+  .container
+    width: 60%
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px)
+  .container
+    width: 50%
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px)
+  .container
+    width: 40%

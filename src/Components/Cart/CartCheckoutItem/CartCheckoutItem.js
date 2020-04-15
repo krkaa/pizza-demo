@@ -2,11 +2,21 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {clearItem, removeItem, addItem} from '../../../redux/cart-reducer'
 import s from './CartCheckoutItem.module.sass'
+import {Popconfirm, message} from "antd";
 
 
 const CartCheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
     const {name, imageUrl, price, quantity} = cartItem;
     let q = 1
+
+    const confirm = e => {
+        message.success('Click on Yes')
+    }
+
+    const cancel = e => {
+        message.error('Click on No')
+    }
+
     return <>
         <tr>
             <td>
@@ -30,9 +40,18 @@ const CartCheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
                 <span className={s.price}>${price}</span>
             </td>
             <td>
-                <div className={s.removeButton} onClick={() => clearItem(cartItem, quantity)}>
-                    &#10005;
-                </div>
+                <Popconfirm
+                    title="Are you sure delete this product?"
+                    placement="top"
+                    onConfirm={confirm}
+                    onCancel={cancel}
+                    okText="Yes"
+                    cancelText="No"
+                >
+                    <div className={s.removeButton} onClick={() => clearItem(cartItem, quantity)}>
+                        &#10005;
+                    </div>
+                </Popconfirm>
             </td>
         </tr>
     </>

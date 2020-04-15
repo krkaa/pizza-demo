@@ -12,14 +12,13 @@ const Header = ({quantityItems}) => {
     const {currentUser} = useContext(AuthContext)
 
     return <div>
-
         <Navbar
             alignLinks="right"
             brand={<NavLink to="/" className={styles.logo}><img src={logo} alt="Logo"/></NavLink>}
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
-            className="deep-orange"
-            options={{
+            className={`deep-orange`}
+                options={{
                 draggable: true,
                 edge: 'left',
                 inDuration: 250,
@@ -31,21 +30,21 @@ const Header = ({quantityItems}) => {
                 preventScrolling: true
             }}
         >
-            <NavLink to="/cart" className={styles.badge}>
+            <NavLink to="/cart" className={`sidenav-close ${styles.badge}`}>
                 Cart
                 <Badge caption="goods">
                     {quantityItems}
                 </Badge>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/" className={'sidenav-close'}>
                 Home
             </NavLink>
-            <NavLink to="/menu">
+            <NavLink to="/menu" className={'sidenav-close'}>
                 Menu
             </NavLink>
             {!currentUser
-                ? <NavLink to="/login">Login</NavLink>
-                : <button className="btn orange" onClick={() => {
+                ? <NavLink to="/login" className={'sidenav-close'}>Login</NavLink>
+                : <button className={`btn orange`} onClick={() => {
                     app.auth().signOut()
                 }}>Sign Out</button>
             }

@@ -34,6 +34,10 @@ const App = ({setLocalCart, localCart}) => {
                     exact path='/'
                     component={HomeContainer}
                 />
+                <Route
+                    exact path='/pizza-demo'
+                    component={HomeContainer}
+                />
                 <Suspense fallback={
                     <Row>
                         <Col s={4}>

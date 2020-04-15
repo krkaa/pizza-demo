@@ -23,7 +23,7 @@ const SignUp = ({history}) => {
         }
     }, [history])
 
-    return <div className={styles.signUp}>
+    return <div className={styles.signIn}>
         <h3 className={styles.h3}>I do not have an account</h3>
         <span className={styles.span}>Sign up with email and password</span>
         <SignUpReduxForm onSubmit={onSubmit}/>

@@ -13,6 +13,7 @@ const SignIn = ({history}) => {
 
     const onSubmit = useCallback(
         async formData => {
+            console.log(formData)
             const email = formData.email
             const password = formData.password
             try {

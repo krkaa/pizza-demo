@@ -6,15 +6,19 @@ import {Layout, Menu, Row} from "antd";
 import {PieChartOutlined} from '@ant-design/icons'
 import CollectionPreview from "./Collection/CollectionPreview";
 import s from "./MenuContent.module.sass"
+import {withWindowSizeListener} from "react-window-size-listener";
+import {compose} from "redux";
 
 const {Content, Sider} = Layout;
 
-const MenuContent = ({menuData, quantityItems}) => {
+const MenuContent = ({menuData, quantityItems, windowSize}) => {
 
     const {currentUser} = useContext(AuthContext)
+    const {windowWidth, windowHeight} = windowSize
 
     const [displayName, setDisplayName] = useState('Гость')
     const [contentId, setContentId] = useState(menuData[0].id)
+    const [width, setWidth] = useState(150)
 
     useEffect(() => {
         if (currentUser != null) {
@@ -24,11 +28,19 @@ const MenuContent = ({menuData, quantityItems}) => {
         }
     }, [currentUser])
 
+    useEffect(() => {
+        if (windowWidth < 600) {
+            setWidth(125)
+        }
+        else if (windowWidth > 600) {
+            setWidth(150)
+        }
+    }, [windowWidth])
 
     return <>
         <MenuHead displayName={displayName} currentUser={currentUser} quantityItems={quantityItems}/>
-        <Layout className="site-layout-background" style={{padding: '24px 0', backgroundColor: '#fff'}}>
-            <Sider className={`site-layout-background ${s.sider}`} width={150}>
+        <Layout className="site-layout-background" style={{padding: '10px 0', backgroundColor: '#fff'}}>
+            <Sider className={`site-layout-background ${s.sider}`} width={width}>
                 <Menu
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
@@ -75,4 +87,7 @@ let mapStateToProps = state => ({
     quantityItems: state.cart.quantityItems
 })
 
-export default connect(mapStateToProps, {})(MenuContent)
+export default compose(
+    withWindowSizeListener,
+    connect(mapStateToProps, {})
+)(MenuContent)
