@@ -1,9 +1,12 @@
-import React from 'react'
-import {reduxForm} from "redux-form";
-import s from '../Cart.module.sass'
-import {Descriptions} from "antd";
+import React, {Fragment} from 'react'
+import {reduxForm} from "redux-form"
+import { useHistory } from "react-router-dom"
+import {Descriptions} from "antd"
+import {Button} from "react-materialize"
 
 const CartOrderForm = ({handleSubmit, cart, totalPrice, userAddress}) => {
+
+    const history = useHistory()
 
     let date = new Date()
     let format = (count) => {
@@ -24,18 +27,23 @@ const CartOrderForm = ({handleSubmit, cart, totalPrice, userAddress}) => {
             {
                 cart.cartItems.map(item => {
                     let total = item.price * item.quantity
-                    return <>
-                        <Descriptions.Item label="Product">{item.name}</Descriptions.Item>
-                        <Descriptions.Item label="Quantity">{item.quantity}</Descriptions.Item>
-                        <Descriptions.Item label="Amount">{`$${total}`}</Descriptions.Item>
+                    const configArr = [...item.config]
+                    let lastIndex = configArr.length - 1
+                    return <Fragment key={item.id}>
+                        <Descriptions.Item label="Product"><b>{item.name}</b></Descriptions.Item>
+                        <Descriptions.Item label="Quantity"><b>{item.quantity}</b></Descriptions.Item>
+                        <Descriptions.Item label="Amount"><b>{`$${total}`}</b></Descriptions.Item>
                         <Descriptions.Item label="Config Info">
-                            meat,
-                            salt,
-                            cheese
+                            {
+                                configArr.map((item, idx) => lastIndex === idx
+                                    ? <b key={idx}>{item}</b>
+                                    : <b key={idx}>{item} | </b>
+                                )
+                            }
                         </Descriptions.Item>
                         <td />
                         <td />
-                    </>
+                    </Fragment>
                 })
             }
         </Descriptions>
@@ -49,6 +57,7 @@ const CartOrderForm = ({handleSubmit, cart, totalPrice, userAddress}) => {
             <Descriptions.Item label="Discount">${discount}.00</Descriptions.Item>
             <Descriptions.Item label="Official">${official}.00</Descriptions.Item>
         </Descriptions>
+        <Button className={"btn orange"} onClick={() => history.push('/cart/success')}>Pay</Button>
     </>
 }
 

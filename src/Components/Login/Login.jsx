@@ -6,7 +6,7 @@ import {Tabs} from "antd";
 
 const { TabPane } = Tabs;
 
-const Login = (props) => {
+const Login = () => {
     return (
         <div className={`card-container ${styles.container}`}>
             <Tabs type="card" center>

@@ -1,32 +1,74 @@
-.homePage
+.carousel
+  margin-top: 15px
+  text-align: center
+  height: 360px
+  background: #F7B21F
+  line-height: 360px
+  .bannerBlock
+    height: 360px
+    img
+      height: 100%
+      width: 100%
+.sectionOrder
+  display: flex
   width: 100%
-  color: #F7B21F
-  height: calc(100vh - 300px)
-  font-size: 22px
-  font-weight: bold
-  background-color: darken(black, 50%)
+  margin: 15px auto
+  position: relative
+  z-index: 1000
+  &::after
+    content: ''
+    position: absolute
+    background-color: rgba(#FF5722, .24)
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
 
-  .shadowForm
+  .formBlock
+    z-index: 10
+    margin: 17% auto
     background-color: rgba(#222, .5)
-    padding: 30px 120px
-    margin: auto 0
-    position: relative
-    height: 50%
-
-    .h1
-      margin: auto 0
-      font-size: 42px
-      margin-right: 20px
-
-    .orderInput
-      width: 250px
+    z-index: 1001
+    form
+      margin: 40px 65px
+      text-align: center
       color: white
 
-.carousel
-  margin-top: 10px
-  text-align: center
-  height: 260px
-  line-height: 260px
-  background: #F7B21F
-  overflow: hidden
+@media only screen and (min-width: 320px)
+  .carousel
+    height: 180px
+    line-height: 180px
+    .bannerBlock
+      height: 180px
 
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px)
+  .carousel
+    height: 220px
+    line-height: 220px
+    .bannerBlock
+      height: 220px
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px)
+  .carousel
+    height: 240px
+    line-height: 240px
+    .bannerBlock
+      height: 240px
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px)
+  .carousel
+    height: 260px
+    line-height: 260px
+    .bannerBlock
+      height: 260px
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px)
+  .carousel
+    height: 340px
+    line-height: 340px
+    .bannerBlock
+      height: 340px

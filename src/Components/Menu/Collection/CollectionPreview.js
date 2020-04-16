@@ -3,16 +3,16 @@ import s from './CollectionPreview.module.sass'
 import {addItem} from '../../../redux/cart-reducer'
 import {connect} from 'react-redux'
 import {Button} from "react-materialize";
-import {Card, Col} from "antd";
-import { message } from 'antd';
+import {Card, Col, Popover} from "antd";
+import {message} from 'antd';
 import {compose} from "redux";
 import {withWindowSizeListener} from "react-window-size-listener";
 
-const { Meta } = Card
+const {Meta} = Card
 
-const CollectionItem = ({item, addItem, windowSize}) => {
+const CollectionItem = ({item, addItem, windowSize, id}) => {
     const {name, price, imageUrl} = item
-    const {windowWidth, windowHeight} = windowSize
+    const {windowWidth} = windowSize
 
     const [spanRow, setSpanRow] = useState(8)
     const [cardWidth, setCardWidth] = useState(200)
@@ -24,38 +24,45 @@ const CollectionItem = ({item, addItem, windowSize}) => {
         message.success('Product add to cart!');
     }
 
+    const configArr = [...item.config]
+    let lastIndex = configArr.length - 1
+    const content = (
+        <div>
+            {
+                configArr.map((item, idx) => lastIndex === idx
+                    ? <b key={idx}>{item}</b>
+                    : <b key={idx}>{item} | </b>
+                )
+            }
+        </div>
+    )
+
     useEffect(() => {
         if (windowWidth < 600) {
             setSpanRow(24)
             setCardWidth(155)
             setImgHeight(155)
-        }
-        else if (windowWidth > 600 && windowWidth < 768) {
+        } else if (windowWidth > 600 && windowWidth < 768) {
             setSpanRow(12)
             setCardWidth(155)
             setImgHeight(155)
-        }
-        else if (windowWidth > 768 && windowWidth < 992) {
+        } else if (windowWidth > 768 && windowWidth < 992) {
             setSpanRow(8)
             setCardWidth(155)
             setImgHeight(155)
-        }
-        else if (windowWidth > 992 && windowWidth < 1200) {
+        } else if (windowWidth > 992 && windowWidth < 1200) {
             setSpanRow(8)
             setCardWidth(200)
             setImgHeight(200)
-        }
-        else if (windowWidth > 1200 && windowWidth < 1449) {
+        } else if (windowWidth > 1200 && windowWidth < 1449) {
             setSpanRow(6)
             setCardWidth(200)
             setImgHeight(200)
-        }
-        else if (windowWidth > 1449 && windowWidth < 1920) {
+        } else if (windowWidth > 1449 && windowWidth < 1920) {
             setSpanRow(6)
             setCardWidth(260)
             setImgHeight(260)
-        }
-        else if (windowWidth > 1920) {
+        } else if (windowWidth > 1920) {
             setSpanRow(6)
             setCardWidth(350)
             setImgHeight(350)
@@ -63,17 +70,19 @@ const CollectionItem = ({item, addItem, windowSize}) => {
     }, [windowWidth])
 
     return (
-
         <Col className="gutter-row" span={spanRow} style={{margin: 'auto 0'}}>
             <Card
                 className={s.card}
-                style={{ width: cardWidth }}
+                style={{width: cardWidth}}
+                hoverable
                 cover={
-                    <img
-                        style={{height: `${imgHeight}px`}}
-                        alt={name}
-                        src={imageUrl}
-                    />
+                    <Popover content={content} title="Config">
+                        <img
+                            style={{height: `${imgHeight}px`}}
+                            alt={name}
+                            src={imageUrl}
+                        />
+                    </Popover>
                 }
                 actions={[
                     <Button

@@ -1,4 +1,3 @@
-import {menuAPI} from "../api/api";
 import db from "../data-clean/data"
 
 const SET_USER_ADRESS = 'menu-reducer/SET_USER_ADRESS'

@@ -14,7 +14,7 @@ const {Content, Sider} = Layout;
 const MenuContent = ({menuData, quantityItems, windowSize}) => {
 
     const {currentUser} = useContext(AuthContext)
-    const {windowWidth, windowHeight} = windowSize
+    const {windowWidth} = windowSize
 
     const [displayName, setDisplayName] = useState('Гость')
     const [contentId, setContentId] = useState(menuData[0].id)
@@ -70,6 +70,7 @@ const MenuContent = ({menuData, quantityItems, windowSize}) => {
                                                 imageUrl={item.imageUrl}
                                                 price={item.price}
                                                 item={item}
+                                                id={item.id}
                                             />
                                         ))
                                 }

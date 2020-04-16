@@ -1,5 +1,5 @@
 import React from 'react';
-import {Footer, Navbar} from "react-materialize";
+import {Footer} from "react-materialize";
 import {NavLink} from "react-router-dom";
 import s from "./Footer.module.sass"
 

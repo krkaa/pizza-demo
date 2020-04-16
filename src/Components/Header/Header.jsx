@@ -44,7 +44,7 @@ const Header = ({quantityItems}) => {
             </NavLink>
             {!currentUser
                 ? <NavLink to="/login" className={'sidenav-close'}>Login</NavLink>
-                : <button className={`btn orange`} onClick={() => {
+                : <button className={`btn blue ${styles.button}`} onClick={() => {
                     app.auth().signOut()
                 }}>Sign Out</button>
             }
