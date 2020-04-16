@@ -1,3 +1,0 @@
-{
-  "/orders/userId/:id": "/orders?userId=:id"
-}
